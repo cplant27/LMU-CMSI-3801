@@ -1,3 +1,11 @@
+function* powersGenerator(min, max) {
+  let power = 1
+  while (power <= max) {
+    yield power
+    power *= min
+  }
+}
+
 function say(word){
 
     let print = (last + word ?? word)
