@@ -1,24 +1,15 @@
-<<<<<<< HEAD
-function say(word) {
-  let print = last + word ?? word;
-=======
 function* powersGenerator(min, max) {
-  let power = 1
+  let power = 1;
   while (power <= max) {
-    yield power
-    power *= min
+    yield power;
+    power *= min;
   }
 }
 
-function say(word){
+function say(word) {
+  let print = last + word ?? word;
 
-    let print = (last + word ?? word)
-
-
-
-
-    console.log (print)
->>>>>>> 83d50717eca23a0b87907491a8a97a12de8e70b5
+  console.log(print);
 
   console.log(print);
 }
@@ -52,7 +43,6 @@ function topTenScorers(inList) {
         leaderboard.pop();
       }
     }
-<<<<<<< HEAD
   }
   return leaderboard;
 }
@@ -113,15 +103,16 @@ let input = {
 };
 
 console.log(topTenScorers(input));
-=======
-}
+//=======
 
 async function pokemonInfo(pokemon) {
-  let name = pokemon.target.textContent.toString()
-  const response = await fetch('https://pokeapi.co/api/v2/pokemon/' + name.toLowerCase())
-  const data = await response.json()
-  let pokemonId = data.Id
-  let pokemonName = name
-  let weight = data.weight
+  let name = pokemon.target.textContent.toString();
+  const response = await fetch(
+    "https://pokeapi.co/api/v2/pokemon/" + name.toLowerCase()
+  );
+  const data = await response.json();
+  let pokemonId = data.Id;
+  let pokemonName = name;
+  let weight = data.weight;
 }
->>>>>>> 83d50717eca23a0b87907491a8a97a12de8e70b5
+//>>>>>>> 83d50717eca23a0b87907491a8a97a12de8e70b5
