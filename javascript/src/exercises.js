@@ -22,28 +22,33 @@ function topTenScorers(inList) {
   let teamsList = Object.entries(inList);
   let leaderboard = [];
 
-  for (const teamPlayer in teamsList) {
-    for (const stats in teamPlayer) {
-      if (stats[2][1] >= 15) {
-        if (
-          leaderboard.length() === 0 ||
-          stats[2][2] / stats[2][1] > leaderboard[-1].ppg
-        ) {
-          leaderboard += {
-            name: stats[2][0],
-            ppg: stats[2][2] / stats[2][1],
-            team: stats[1],
-          };
-          points.sort(function (a, b) {
-            return a.ppg - b.ppg;
-          });
-        }
-      }
-      if (leaderboard.length() > 10) {
-        leaderboard.pop();
+  for (const [ind, teamPlayers] in teamsList) {
+    console.log(`${ind}: ` + teamsList[ind][0]);
+    for (const [key, val] in teamsList[ind][1]) {
+      let stats = teamsList[ind][1][key];
+
+      console.log(stats);
+      if (stats[1] >= 15) {
+        console.log(`name ${typeof stats[0]}`);
+        console.log(`ppg: ${stats[2] / stats[1]}`);
+        console.log(`team: ${typeof teamsList[ind][0]}`);
+        leaderboard += {
+          name: String(stats[0]),
+          ppg: String(stats[2] / stats[1]),
+          team: String(teamsList[ind][0]),
+        };
+        console.log("leaderboard[-1]" + leaderboard[0]);
+        /*leaderboard.sort(function (a, b) {
+          return a.ppg - b.ppg;
+        });*/
       }
     }
+    if (leaderboard.length > 10) {
+      leaderboard = leaderboard.slice(0, 10);
+    }
   }
+  console.log("-----------------------------------------------------------");
+  console.log(leaderboard[0]);
   return leaderboard;
 }
 
@@ -116,3 +121,5 @@ async function pokemonInfo(pokemon) {
   let weight = data.weight;
 }
 //>>>>>>> 83d50717eca23a0b87907491a8a97a12de8e70b5
+
+export class Quaternion {}
