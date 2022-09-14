@@ -1,8 +1,90 @@
-function* powersGenerator(min, max) {
-  let power = 1;
-  while (power <= max) {
-    yield power;
-    power *= min;
+function changeMaker(p1) {
+  let change = [];
+  let quarters = 0;
+  let dimes = 0;
+  let nickles = 0;
+  let pennies = 0;
+
+  if (Math.sign(p1) === -1) {
+    throw "Value cannot be negative!";
+  }
+
+  while (p1 >= 25) {
+    quarters = quarters + 1;
+    p1 = p1 - 25;
+  }
+
+  change[0] = quarters + " quarter(s)";
+
+  while (p1 >= 10) {
+    dimes = dimes + 1;
+    p1 = p1 - 10;
+  }
+
+  change[1] = dimes + " dime(s)";
+
+  while (p1 >= 5) {
+    nickles = nickles + 1;
+    p1 = p1 - 5;
+  }
+
+  change[2] = nickles + " nickle(s)";
+  pennies = p1;
+  change[3] = pennies + " penny(s)";
+  console.log(change);
+
+  return true;
+}
+
+function stretched(p1) {
+  numRepeats = 1;
+  finalWord = "";
+
+  for (let i = 0; i < p1.length; i++) {
+    if (p1.charAt(i) === " ") {
+      continue;
+    } else {
+      for (let j = 0; j < numRepeats; j++) {
+        finalWord = finalWord + p1.charAt(i);
+      }
+    }
+
+    numRepeats = numRepeats + 1;
+  }
+
+  console.log(finalWord);
+  return finalWord;
+}
+
+function powers(base, limit) {
+  value = 0;
+  currPower = 0;
+
+  while (value < limit) {
+    value = base ** currPower;
+
+    if (value > limit) {
+      break;
+    }
+
+    console.log(value);
+    currPower++;
+  }
+}
+
+function* powersGenerator(base, limit) {
+  value = 0;
+  currPower = 0;
+
+  while (value < limit) {
+    value = base ** currPower;
+
+    if (value > limit) {
+      break;
+    }
+
+    yield console.log("value: " + value);
+    currPower++;
   }
 }
 
