@@ -1,36 +1,30 @@
 export function change(p1) {
-  let change = [];
-  let quarters = 0;
-  let dimes = 0;
-  let nickles = 0;
-  let pennies = 0;
+  let change = [0, 0, 0, 0];
 
   if (p1 < 0) {
     throw "Value cannot be negative!";
   }
 
-  while (p1 >= 25) {
-    quarters = quarters + 1;
-    p1 = p1 - 25;
+  if (p1 > 1000) {
+    return 0;
   }
 
-  change[0] = quarters;
+  while (p1 >= 25) {
+    p1 = p1 - 25;
+    change[0] += 1;
+  }
 
   while (p1 >= 10) {
-    dimes = dimes + 1;
+    change[1] += 1;
     p1 = p1 - 10;
   }
 
-  change[1] = dimes;
-
   while (p1 >= 5) {
-    nickles = nickles + 1;
+    change[2] += 1;
     p1 = p1 - 5;
   }
 
-  change[2] = nickles;
-  pennies = p1;
-  change[3] = pennies;
+  change[3] = p1;
 
   return change;
 }
