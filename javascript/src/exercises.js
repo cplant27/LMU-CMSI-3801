@@ -63,21 +63,14 @@ export function powers(base, limit) {
   }
 }
 
-export function* powersGenerator(base, limit) {
-  value = 0;
-  currPower = 0;
-
-  while (value < limit) {
-    value = base ** currPower;
-
-    if (value > limit) {
-      break;
-    }
-
-    yield console.log("value: " + value);
-    currPower++;
+function* powersGenerator(num, max) {
+  let power = 1;
+  while (power <= max) {
+    yield power;
+    power *= max;
   }
 }
+//from notes
 
 export function say(word) {
   if (word === undefined) return phrase;
