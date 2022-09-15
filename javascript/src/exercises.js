@@ -219,4 +219,33 @@ export async function pokemonInfo(pokemon) {
 }
 //>>>>>>> 83d50717eca23a0b87907491a8a97a12de8e70b5
 
-export class Quaternion {}
+export class Quaternion {
+  constructor(a, b, c, d) {
+    this.co1 = a;
+    this.co2 = b;
+    this.co3 = c;
+    this.co4 = d;
+  }
+}
+
+function plus(q) {
+  const answer = new Quaternion(
+    this.co1 + q.co1,
+    this.co2 + q.co2,
+    this.co3 + q.co3,
+    this.co4 + q.co4
+  );
+  return answer;
+}
+
+function times(q) {
+  let ans1 =
+    this.co1 * q.co1 - this.co2 * q.co2 - this.co3 * q.co3 - this.co4 * q.co4;
+  let ans2 =
+    this.co1 * q.co2 + this.co2 * q.co1 + this.co3 * q.co4 - this.co4 * q.co3;
+  let ans3 =
+    this.co1 * q.co3 - this.co2 * q.co4 + this.co3 * q.co1 + this.co4 * q.co2;
+  let ans4 =
+    this.co1 * q.co4 + this.co2 * q.co3 - this.co3 * q.co2 + this.co4 * q.co1;
+  return new Quaternion(ans1, ans2, ans3, ans4);
+}
