@@ -2,16 +2,12 @@ export function change(p1) {
   let change = [0, 0, 0, 0];
 
   if (p1 < 0) {
-    throw "Value cannot be negative!";
+    throw new RangeError("Value cannot be negative!");
   }
 
-  if (p1 > 1000) {
-    return 0;
-  }
-
-  while (p1 >= 25) {
-    p1 = p1 - 25;
-    change[0] += 1;
+  if (p1 >= 25) {
+    change[0] = Math.floor(p1 / 25);
+    p1 = p1 % 25;
   }
 
   while (p1 >= 10) {
@@ -30,22 +26,24 @@ export function change(p1) {
 }
 
 export function stretched(p1) {
-  numRepeats = 1;
-  finalWord = "";
+  p1 = p1.replace(/\s/g, "");
+  //talked to julian for regular expression
+  let p2 = Array.from(p1);
 
-  for (let i = 0; i < p1.length; i++) {
+  p2 = p2.map((letter, index) => letter.repeat(index + 1));
+  let finalWord = p2.join("");
+
+  /*for (let i = 0; i < p1.length; i++) {
     if (p1.charAt(i) === " ") {
       continue;
     } else {
-      for (let j = 0; j < numRepeats; j++) {
-        finalWord = finalWord + p1.charAt(i);
+      let repeat = i + 1;
+      while (repeat !== 0) {
+        finalWord.concat( p1.charAt[i]);
+        repeat--;
       }
     }
-
-    numRepeats = numRepeats + 1;
-  }
-
-  console.log(finalWord);
+  }*/
   return finalWord;
 }
 
@@ -111,6 +109,10 @@ export function makeCryptoFunctions(forKey, using, withIV) {
 
 export function topTenScorers(inList) {
   let teamsList = Object.entries(inList);
+}
+
+/*export function topTenScorers(inList) {
+  let teamsList = Object.entries(inList);
   let leaderboard = [];
 
   for (const [ind, teamPlayers] in teamsList) {
@@ -132,16 +134,14 @@ export function topTenScorers(inList) {
         /*leaderboard.sort(function (a, b) {
           return a.ppg - b.ppg;
         });*/
-      }
+/*      }
     }
     if (leaderboard.length > 10) {
       leaderboard = leaderboard.slice(0, 10);
     }
   }
-  //console.log("-----------------------------------------------------------");
-  //console.log(leaderboard[0]);
   return leaderboard;
-}
+}*/
 
 let input = {
   ATL: [
