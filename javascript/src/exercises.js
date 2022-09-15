@@ -33,17 +33,6 @@ export function stretched(p1) {
   p2 = p2.map((letter, index) => letter.repeat(index + 1));
   let finalWord = p2.join("");
 
-  /*for (let i = 0; i < p1.length; i++) {
-    if (p1.charAt(i) === " ") {
-      continue;
-    } else {
-      let repeat = i + 1;
-      while (repeat !== 0) {
-        finalWord.concat( p1.charAt[i]);
-        repeat--;
-      }
-    }
-  }*/
   return finalWord;
 }
 
@@ -102,6 +91,18 @@ export function makeCryptoFunctions(forKey, using, withIV) {
 
 export function topTenScorers(inList) {
   let teamsList = Object.entries(inList);
+  let leaderboard = teamsList.flatMap((teamPlayers) =>
+    teamPlayers[1].map((playerArray) => [...playerArray, teamPlayers[0]])
+  );
+  leaderboard = leaderboard.filter((stats) => stats[1] >= 15);
+  leaderboard.map((blah) => {
+    blah[1] = blah[2] / blah[1];
+    blah = blah.splice(2, 1);
+  });
+  console.log(leaderboard);
+  leaderboard.sort((a, b) => {
+    return a[1] - b[1];
+  });
 }
 
 /*export function topTenScorers(inList) {
