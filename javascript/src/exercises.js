@@ -39,21 +39,18 @@ export function stretched(p1) {
   return finalWord;
 }
 
-export function powers(base, limit) {
-  value = 0;
-  currPower = 0;
-
-  while (value < limit) {
-    value = base ** currPower;
-
-    if (value > limit) {
-      break;
-    }
-
-    console.log(value);
-    currPower++;
+export function powers(base, limit, x) {
+  console.log(x);
+  let pow = 0;
+  let ans = 0;
+  while (base ** pow <= limit) {
+    ans = base ** pow;
+    pow++;
   }
+  return ans;
 }
+
+console.log(powers(2, 80));
 
 export function* powersGenerator(num, max) {
   let power = 1;
@@ -75,7 +72,7 @@ export function say(word) {
     };
 }
 
-console.log(say("hi")());
+//console.log(say("hi")());
 
 export function makeCryptoFunctions(forKey, using, withIV) {
   crypto.createCipheriv(hex);
