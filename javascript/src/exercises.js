@@ -39,15 +39,14 @@ export function stretched(p1) {
   return finalWord;
 }
 
-export function powers(base, limit, x) {
-  console.log(x);
+export function powers(base, limit, func) {
+  console.log(typeof func);
   let pow = 0;
   let ans = 0;
   while (base ** pow <= limit) {
     ans = base ** pow;
     pow++;
   }
-  return ans;
 }
 
 console.log(powers(2, 80));
