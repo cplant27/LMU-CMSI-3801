@@ -1,3 +1,6 @@
+import fetch from "node-fetch";
+globalThis.fetch = fetch;
+
 export function change(p1) {
   let change = [0, 0, 0, 0];
 
