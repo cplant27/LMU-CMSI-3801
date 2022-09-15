@@ -213,7 +213,7 @@ export async function pokemonInfo(pokemon) {
     "https://pokeapi.co/api/v2/pokemon/" + name.toLowerCase()
   );
   const data = await response.json();
-  let pokemonId = data.Id;
+  let pokemonId = data.id;
   let pokemonName = name;
   let weight = data.weight;
 }
