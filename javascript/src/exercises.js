@@ -1,3 +1,6 @@
+import fetch from "node-fetch";
+globalThis.fetch = fetch;
+
 export function change(p1) {
   let change = [0, 0, 0, 0];
 
@@ -52,21 +55,14 @@ export function powers(base, limit) {
   }
 }
 
-export function* powersGenerator(base, limit) {
-  value = 0;
-  currPower = 0;
-
-  while (value < limit) {
-    value = base ** currPower;
-
-    if (value > limit) {
-      break;
-    }
-
-    yield console.log("value: " + value);
-    currPower++;
+export function* powersGenerator(num, max) {
+  let power = 1;
+  while (power <= max) {
+    yield power;
+    power *= num;
   }
 }
+//from notes
 
 export function say(word) {
   if (word === undefined) return phrase;
@@ -254,7 +250,10 @@ export class Quaternion {
       this.co1 * q.co4 + this.co2 * q.co3 - this.co3 * q.co2 + this.co4 * q.co1;
     return new Quaternion(ans1, ans2, ans3, ans4);
   }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0b75ae2ba6d9221aacf3c84a7ec7c55491e9de9c
   coefficients() {
     let answer = [this.co1, this.co2, this.co3, this.co4];
     return answer;
