@@ -1,11 +1,11 @@
-function changeMaker(p1) {
+export function change(p1) {
   let change = [];
   let quarters = 0;
   let dimes = 0;
   let nickles = 0;
   let pennies = 0;
 
-  if (Math.sign(p1) === -1) {
+  if (p1 < 0) {
     throw "Value cannot be negative!";
   }
 
@@ -14,29 +14,28 @@ function changeMaker(p1) {
     p1 = p1 - 25;
   }
 
-  change[0] = quarters + " quarter(s)";
+  change[0] = quarters;
 
   while (p1 >= 10) {
     dimes = dimes + 1;
     p1 = p1 - 10;
   }
 
-  change[1] = dimes + " dime(s)";
+  change[1] = dimes;
 
   while (p1 >= 5) {
     nickles = nickles + 1;
     p1 = p1 - 5;
   }
 
-  change[2] = nickles + " nickle(s)";
+  change[2] = nickles;
   pennies = p1;
-  change[3] = pennies + " penny(s)";
-  console.log(change);
+  change[3] = pennies;
 
-  return true;
+  return change;
 }
 
-function stretched(p1) {
+export function stretched(p1) {
   numRepeats = 1;
   finalWord = "";
 
@@ -56,7 +55,7 @@ function stretched(p1) {
   return finalWord;
 }
 
-function powers(base, limit) {
+export function powers(base, limit) {
   value = 0;
   currPower = 0;
 
@@ -72,7 +71,7 @@ function powers(base, limit) {
   }
 }
 
-function* powersGenerator(base, limit) {
+export function* powersGenerator(base, limit) {
   value = 0;
   currPower = 0;
 
@@ -88,38 +87,54 @@ function* powersGenerator(base, limit) {
   }
 }
 
-function say(word) {
-  let print = last + word ?? word;
-
-  console.log(print);
-
-  console.log(print);
+export function say(word) {
+  if (word === undefined) return phrase;
+  else
+    (phrase) => {
+      if (phrase === undefined) return word;
+      else phrase + word;
+    };
+  say(phrase);
 }
 
-function makeCryptoKey(forKey, using, withIV) {
+function say2(func) {
+  return function curried(...args) {
+    if (args.length >= func.length) {
+      return func.apply(this, args);
+    } else {
+      return function (...args2) {
+        return curried.apply(this, args.concat(args2));
+      };
+    }
+  };
+}
+
+say2("hello")("how")("are")("you");
+
+export function makeCryptoFunctions(forKey, using, withIV) {
   crypto.createCipheriv(hex);
 }
 
-function topTenScorers(inList) {
+export function topTenScorers(inList) {
   let teamsList = Object.entries(inList);
   let leaderboard = [];
 
   for (const [ind, teamPlayers] in teamsList) {
-    console.log(`${ind}: ` + teamsList[ind][0]);
+    //console.log(`${ind}: ` + teamsList[ind][0]);
     for (const [key, val] in teamsList[ind][1]) {
       let stats = teamsList[ind][1][key];
 
       console.log(stats);
       if (stats[1] >= 15) {
-        console.log(`name ${typeof stats[0]}`);
-        console.log(`ppg: ${stats[2] / stats[1]}`);
-        console.log(`team: ${typeof teamsList[ind][0]}`);
+        //console.log(`name ${typeof stats[0]}`);
+        //console.log(`ppg: ${stats[2] / stats[1]}`);
+        //console.log(`team: ${typeof teamsList[ind][0]}`);
         leaderboard += {
           name: String(stats[0]),
           ppg: String(stats[2] / stats[1]),
           team: String(teamsList[ind][0]),
         };
-        console.log("leaderboard[-1]" + leaderboard[0]);
+        //console.log("leaderboard[-1]" + leaderboard[0]);
         /*leaderboard.sort(function (a, b) {
           return a.ppg - b.ppg;
         });*/
@@ -129,8 +144,8 @@ function topTenScorers(inList) {
       leaderboard = leaderboard.slice(0, 10);
     }
   }
-  console.log("-----------------------------------------------------------");
-  console.log(leaderboard[0]);
+  //console.log("-----------------------------------------------------------");
+  //console.log(leaderboard[0]);
   return leaderboard;
 }
 
@@ -192,7 +207,7 @@ let input = {
 console.log(topTenScorers(input));
 //=======
 
-async function pokemonInfo(pokemon) {
+export async function pokemonInfo(pokemon) {
   let name = pokemon.target.textContent.toString();
   const response = await fetch(
     "https://pokeapi.co/api/v2/pokemon/" + name.toLowerCase()
