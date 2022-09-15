@@ -40,18 +40,14 @@ export function stretched(p1) {
 }
 
 export function powers(base, limit, func) {
-  console.log("TYPEOF FUNC: ", typeof func);
   let pow = 0;
   let ans = 0;
   while (base ** pow <= limit) {
     ans = base ** pow;
-    console.log(`base: ${base}, pow: ${pow}, ans: ${ans}`);
+    func(ans);
     pow++;
   }
-  func(ans);
 }
-
-// console.log(powers(2, 80));
 
 export function* powersGenerator(num, max) {
   let power = 1;
