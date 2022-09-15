@@ -208,14 +208,17 @@ console.log(topTenScorers(input));
 //=======
 
 export async function pokemonInfo(pokemon) {
-  let name = pokemon.target.textContent.toString();
+  let name = pokemon.toString();
   const response = await fetch(
     "https://pokeapi.co/api/v2/pokemon/" + name.toLowerCase()
   );
   const data = await response.json();
-  let pokemonId = data.id;
-  let pokemonName = name;
-  let weight = data.weight;
+
+  return {
+    pokemonId: data.id,
+    pokemonName: data.name,
+    weight: data.weight,
+  };
 }
 //>>>>>>> 83d50717eca23a0b87907491a8a97a12de8e70b5
 
