@@ -97,19 +97,27 @@ export function makeCryptoFunctions(forKey, using, withIV) {
 }
 
 export function topTenScorers(inList) {
-  let teamsList = Object.entries(inList);
-  let leaderboard = teamsList.flatMap((teamPlayers) =>
-    teamPlayers[1].map((playerArray) => [...playerArray, teamPlayers[0]])
-  );
-  leaderboard = leaderboard.filter((stats) => stats[1] >= 15);
-  leaderboard.map((blah) => {
-    blah[1] = blah[2] / blah[1];
-    blah = blah.splice(2, 1);
-  });
-  console.log(leaderboard);
-  leaderboard.sort((a, b) => {
-    return a[1] - b[1];
-  });
+  let leaderboard = Object.entries(inList)
+    .flatMap((teamPlayers) =>
+      teamPlayers[1].map((playerArray) => [...playerArray, teamPlayers[0]])
+    )
+    .filter((stats) => stats[1] >= 15)
+    .map((postFilter) => {
+      return [postFilter[0], postFilter[2] / postFilter[1], postFilter[3]];
+    })
+    .map((playerStats) => {
+      return {
+        name: playerStats[0],
+        ppg: playerStats[1],
+        team: playerStats[2],
+      };
+    })
+    .sort((a, b) => {
+      return b.ppg - a.ppg;
+    })
+    .splice(0, 10);
+
+  return leaderboard;
 }
 
 /*export function topTenScorers(inList) {
@@ -226,11 +234,7 @@ export class Quaternion {
   }
 
   plus(q) {
-<<<<<<< HEAD
-    const answer = new Quaternion(
-=======
     let answer = new Quaternion(
->>>>>>> e4f70c375948582ee8b315c6c0d74126337472dc
       this.co1 + q.co1,
       this.co2 + q.co2,
       this.co3 + q.co3,
@@ -250,11 +254,9 @@ export class Quaternion {
       this.co1 * q.co4 + this.co2 * q.co3 - this.co3 * q.co2 + this.co4 * q.co1;
     return new Quaternion(ans1, ans2, ans3, ans4);
   }
-<<<<<<< HEAD
-=======
+
   coefficients() {
     let answer = [this.co1, this.co2, this.co3, this.co4];
     return answer;
   }
->>>>>>> e4f70c375948582ee8b315c6c0d74126337472dc
 }
