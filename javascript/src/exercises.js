@@ -215,8 +215,8 @@ export async function pokemonInfo(pokemon) {
   const data = await response.json();
 
   return {
-    pokemonId: data.id,
-    pokemonName: data.name,
+    id: data.id,
+    name: data.name,
     weight: data.weight,
   };
 }
