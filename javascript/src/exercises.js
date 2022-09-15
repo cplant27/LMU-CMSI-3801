@@ -226,7 +226,11 @@ export class Quaternion {
   }
 
   plus(q) {
+<<<<<<< HEAD
     const answer = new Quaternion(
+=======
+    let answer = new Quaternion(
+>>>>>>> e4f70c375948582ee8b315c6c0d74126337472dc
       this.co1 + q.co1,
       this.co2 + q.co2,
       this.co3 + q.co3,
@@ -246,4 +250,11 @@ export class Quaternion {
       this.co1 * q.co4 + this.co2 * q.co3 - this.co3 * q.co2 + this.co4 * q.co1;
     return new Quaternion(ans1, ans2, ans3, ans4);
   }
+<<<<<<< HEAD
+=======
+  coefficients() {
+    let answer = [this.co1, this.co2, this.co3, this.co4];
+    return answer;
+  }
+>>>>>>> e4f70c375948582ee8b315c6c0d74126337472dc
 }
