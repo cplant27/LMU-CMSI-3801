@@ -52,7 +52,7 @@ export function powers(base, limit) {
   }
 }
 
-function* powersGenerator(num, max) {
+export function* powersGenerator(num, max) {
   let power = 1;
   while (power <= max) {
     yield power;
