@@ -56,7 +56,7 @@ export function* powersGenerator(num, max) {
   let power = 1;
   while (power <= max) {
     yield power;
-    power *= max;
+    power *= num;
   }
 }
 //from notes
