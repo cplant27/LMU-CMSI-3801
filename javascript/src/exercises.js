@@ -33,17 +33,6 @@ export function stretched(p1) {
   p2 = p2.map((letter, index) => letter.repeat(index + 1));
   let finalWord = p2.join("");
 
-  /*for (let i = 0; i < p1.length; i++) {
-    if (p1.charAt(i) === " ") {
-      continue;
-    } else {
-      let repeat = i + 1;
-      while (repeat !== 0) {
-        finalWord.concat( p1.charAt[i]);
-        repeat--;
-      }
-    }
-  }*/
   return finalWord;
 }
 
@@ -109,6 +98,18 @@ export function makeCryptoFunctions(forKey, using, withIV) {
 
 export function topTenScorers(inList) {
   let teamsList = Object.entries(inList);
+  let leaderboard = teamsList.flatMap((teamPlayers) =>
+    teamPlayers[1].map((playerArray) => [...playerArray, teamPlayers[0]])
+  );
+  leaderboard = leaderboard.filter((stats) => stats[1] >= 15);
+  leaderboard.map((blah) => {
+    blah[1] = blah[2] / blah[1];
+    blah = blah.splice(2, 1);
+  });
+  console.log(leaderboard);
+  leaderboard.sort((a, b) => {
+    return a[1] - b[1];
+  });
 }
 
 /*export function topTenScorers(inList) {
@@ -223,26 +224,26 @@ export class Quaternion {
     this.co3 = c;
     this.co4 = d;
   }
-}
 
-function plus(q) {
-  const answer = new Quaternion(
-    this.co1 + q.co1,
-    this.co2 + q.co2,
-    this.co3 + q.co3,
-    this.co4 + q.co4
-  );
-  return answer;
-}
+  plus(q) {
+    const answer = new Quaternion(
+      this.co1 + q.co1,
+      this.co2 + q.co2,
+      this.co3 + q.co3,
+      this.co4 + q.co4
+    );
+    return answer;
+  }
 
-function times(q) {
-  let ans1 =
-    this.co1 * q.co1 - this.co2 * q.co2 - this.co3 * q.co3 - this.co4 * q.co4;
-  let ans2 =
-    this.co1 * q.co2 + this.co2 * q.co1 + this.co3 * q.co4 - this.co4 * q.co3;
-  let ans3 =
-    this.co1 * q.co3 - this.co2 * q.co4 + this.co3 * q.co1 + this.co4 * q.co2;
-  let ans4 =
-    this.co1 * q.co4 + this.co2 * q.co3 - this.co3 * q.co2 + this.co4 * q.co1;
-  return new Quaternion(ans1, ans2, ans3, ans4);
+  times(q) {
+    let ans1 =
+      this.co1 * q.co1 - this.co2 * q.co2 - this.co3 * q.co3 - this.co4 * q.co4;
+    let ans2 =
+      this.co1 * q.co2 + this.co2 * q.co1 + this.co3 * q.co4 - this.co4 * q.co3;
+    let ans3 =
+      this.co1 * q.co3 - this.co2 * q.co4 + this.co3 * q.co1 + this.co4 * q.co2;
+    let ans4 =
+      this.co1 * q.co4 + this.co2 * q.co3 - this.co3 * q.co2 + this.co4 * q.co1;
+    return new Quaternion(ans1, ans2, ans3, ans4);
+  }
 }
