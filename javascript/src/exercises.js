@@ -73,8 +73,24 @@ export function say(word) {
 
 //console.log(say("hi")());
 
-export function makeCryptoFunctions(forKey, using, withIV) {
-  crypto.createCipheriv("hex");
+export function makeCryptoFunctions({ using, forKey, withIV }) {
+  function e(s) {
+    let cipher = crypto.createCipheriv(using, Buffer.from(forKey), withIV);
+    let encrypted = cipher.update(s);
+    encrypted = Buffer.concat([Buffer.from(encrypted), cipher.final()]);
+
+    return encrypted.toString("hex");
+  }
+
+  function d(s) {
+    let cipher = crypto.createDecipheriv(using, Buffer.from(forKey), withIV);
+    let decrypted = cipher.update(s, "hex", "utf8");
+    decrypted = Buffer.concat([Buffer.from(decrypted), cipher.final()]);
+
+    return decrypted.toString("utf8");
+  }
+
+  return [e, d];
 }
 
 export function topTenScorers(inList) {
