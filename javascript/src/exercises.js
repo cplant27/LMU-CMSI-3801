@@ -1,3 +1,5 @@
+import crypto from "crypto";
+
 import fetch from "node-fetch";
 globalThis.fetch = fetch;
 
@@ -59,12 +61,12 @@ export function* powersGenerator(num, max) {
 //from notes
 
 export function say(word) {
-  if (word === undefined) return "done.";
+  if (word === undefined) return "";
   else
-    (say2) => {
+    return (say2) => {
       if (say2 === undefined) return word;
       else {
-        word = `${word} ${say(word)}`;
+        return say(word + " " + say2);
       }
     };
 }
@@ -72,7 +74,7 @@ export function say(word) {
 //console.log(say("hi")());
 
 export function makeCryptoFunctions(forKey, using, withIV) {
-  crypto.createCipheriv(hex);
+  crypto.createCipheriv("hex");
 }
 
 export function topTenScorers(inList) {
