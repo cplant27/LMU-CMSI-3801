@@ -6,10 +6,10 @@
     "test": "test"
   },
   "scripts": {
-    "test": "node javascript/node_modules/mocha/bin/mocha.js"
+    "test": "mocha"
   },
   "type": "module",
-  "author": "CJ Plantemoli, Chris Jansky, Jayden Craig, Sam Richard",
+  "author": "Your name and your teammates names",
   "license": "MIT",
   "description": "A JavaScript project for CMSI 3801 homework",
   "devDependencies": {
