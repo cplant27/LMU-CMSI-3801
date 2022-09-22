@@ -9,7 +9,7 @@
     "test": "mocha"
   },
   "type": "module",
-  "author": "Your name and your teammates names",
+  "author": "Chris Jansky, CJ Plantemoli, Jayden Craig",
   "license": "MIT",
   "description": "A JavaScript project for CMSI 3801 homework",
   "devDependencies": {
