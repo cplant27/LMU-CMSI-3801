@@ -58,19 +58,19 @@ def find_first_then_lower(func, strings):
     raise ValueError
 
 def crypto_functions(using, for_key, with_iv):
-    def e(s):
+    def encode(s):
         cipher = crypto.Cipher(using, crypto.MODE_CFB, for_key, iv=with_iv)
         encrypted = cipher.encrypt(s)
 
         return encrypted.encode("hex")
 
-    def d(s):
+    def decode(s):
         cipher = crypto.Cipher(using, crypto.MODE_CFB, for_key, iv=with_iv)
         decrypted = cipher.decrypt(s.decode("hex"))
 
         return decrypted
 
-    return [e, d]
+    return [encode, decode]
 
 def top_ten_scorers (input):
     pass
