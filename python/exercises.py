@@ -1,5 +1,6 @@
 import math
 import array
+import crypto
 
 def change (amt):
     change = [0,0,0,0]
@@ -56,10 +57,22 @@ def find_first_then_lower(func, strings):
             return s.lower()
     raise ValueError
 
-def top_ten_scorers (input):
-    pass
+def crypto_functions(using, for_key, with_iv):
+    def encode(s):
+        cipher = crypto.Cipher(using, crypto.MODE_CFB, for_key, iv=with_iv)
+        encrypted = cipher.encrypt(s)
 
-def crypto_functions(input):
+        return encrypted.encode("hex")
+
+    def decode(s):
+        cipher = crypto.Cipher(using, crypto.MODE_CFB, for_key, iv=with_iv)
+        decrypted = cipher.decrypt(s.decode("hex"))
+
+        return decrypted
+
+    return [encode, decode]
+
+def top_ten_scorers (input):
     pass
 
 class Quaternion:
