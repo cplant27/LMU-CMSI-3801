@@ -1,6 +1,6 @@
 import math
 import array
-import crypto
+from cryptography.fernet import Fernet
 
 def change (amt):
     change = [0,0,0,0]
@@ -57,19 +57,13 @@ def find_first_then_lower(func, strings):
             return s.lower()
     raise ValueError
 
-def crypto_functions(using, for_key, with_iv):
+def crypto_functions(word):
+    key = Fernet.generate_key()
+    fernet = Fernet(key)
     def encode(s):
-        cipher = crypto.Cipher(using, crypto.MODE_CFB, for_key, iv=with_iv)
-        encrypted = cipher.encrypt(s)
-
-        return encrypted.encode("hex")
-
+       fernet.encrypt(word.encode()) 
     def decode(s):
-        cipher = crypto.Cipher(using, crypto.MODE_CFB, for_key, iv=with_iv)
-        decrypted = cipher.decrypt(s.decode("hex"))
-
-        return decrypted
-
+        fernet.decrypt(encode(word)).decode()
     return [encode, decode]
 
 def top_ten_scorers (input):
