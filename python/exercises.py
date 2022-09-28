@@ -56,10 +56,10 @@ def find_first_then_lower(func, strings):
             return s.lower()
     raise ValueError
 
-def crypto_functions(input):
+def top_ten_scorers (input):
     pass
 
-def top_ten_scorers (input):
+def crypto_functions(input):
     pass
 
 class Quaternion:
