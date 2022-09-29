@@ -62,11 +62,14 @@ def crypto_functions():
     fernet = Fernet(key)
     def encode(s):
 <<<<<<< HEAD
+<<<<<<< HEAD
        return fernet.encrypt(s.encode()) 
     def decode(s):
         return fernet.decrypt(encode(s)).decode()
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> d8e9aa312b499b946b676616fe1b3cef9210785d
        encoded = fernet.encrypt(s.encode()) 
        return encoded
     def decode(s):
@@ -77,6 +80,9 @@ def crypto_functions():
     def decode(s):
         fernet.decrypt(encode(s)).decode()
 >>>>>>> 21fcd0ba55daa78ddbf0232c0c28ed5b2657b2fe
+<<<<<<< HEAD
+>>>>>>> d8e9aa312b499b946b676616fe1b3cef9210785d
+=======
 >>>>>>> d8e9aa312b499b946b676616fe1b3cef9210785d
     return [encode, decode]
 
