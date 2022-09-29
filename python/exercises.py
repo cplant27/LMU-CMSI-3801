@@ -61,34 +61,49 @@ def crypto_functions():
     key = Fernet.generate_key()
     fernet = Fernet(key)
     def encode(s):
+<<<<<<< HEAD
+       return fernet.encrypt(s.encode()) 
+    def decode(s):
+        return fernet.decrypt(encode(s)).decode()
+=======
+<<<<<<< HEAD
+       encoded = fernet.encrypt(s.encode()) 
+       return encoded
+    def decode(s):
+        decoded = fernet.decrypt(encode(s)).decode()
+        return decoded
+=======
        fernet.encrypt(s.encode()) 
     def decode(s):
         fernet.decrypt(encode(s)).decode()
+>>>>>>> 21fcd0ba55daa78ddbf0232c0c28ed5b2657b2fe
+>>>>>>> d8e9aa312b499b946b676616fe1b3cef9210785d
     return [encode, decode]
 
 def top_ten_scorers (input):
     pass
 
 class Quaternion:
-    def __init__(self, a, b, c, decrypt):
+    def __init__(self, a, b, c, d):
         self.co1 = a
         self.co2 = b
         self.co3 = c
         self.co4 = d
 
-    def plus(q):
+    def __add__(self, q):
         answer = Quaternion(self.co1 + q.co1, self.co2 + q.co2, self.co3 + q.co3, self.co4 + q.co4)
         return answer
 
-    def times(q):
+
+    def __mul__(self, q):
         ans1 = self.co1 * q.co1 - self.co2 * q.co2 - self.co3 * q.co3 - self.co4 * q.co4
         ans2 = self.co1 * q.co2 + self.co2 * q.co1 + self.co3 * q.co4 - self.co4 * q.co3
         ans3 = self.co1 * q.co3 - self.co2 * q.co4 + self.co3 * q.co1 + self.co4 * q.co2
         ans4 = self.co1 * q.co4 + self.co2 * q.co3 - self.co3 * q.co2 + self.co4 * q.co1
-    return Quaternion(ans1, ans2, ans3, ans4)
+        return Quaternion(ans1, ans2, ans3, ans4)
 
-    def coefficients():
-        answer = [self.co1, self.co2, self.co3, self.co4]
+    def coefficients(self):
+        answer = (self.co1, self.co2, self.co3, self.co4)
         return answer
 
         
