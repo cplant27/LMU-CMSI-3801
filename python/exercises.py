@@ -57,13 +57,13 @@ def find_first_then_lower(func, strings):
             return s.lower()
     raise ValueError
 
-def crypto_functions(word):
+def crypto_functions():
     key = Fernet.generate_key()
     fernet = Fernet(key)
     def encode(s):
-       fernet.encrypt(word.encode()) 
+       fernet.encrypt(s.encode()) 
     def decode(s):
-        fernet.decrypt(encode(word)).decode()
+        fernet.decrypt(encode(s)).decode()
     return [encode, decode]
 
 def top_ten_scorers (input):
