@@ -61,29 +61,11 @@ def crypto_functions():
     key = Fernet.generate_key()
     fernet = Fernet(key)
     def encode(s):
-<<<<<<< HEAD
-<<<<<<< HEAD
-       return fernet.encrypt(s.encode()) 
-    def decode(s):
-        return fernet.decrypt(encode(s)).decode()
-=======
-<<<<<<< HEAD
-=======
->>>>>>> d8e9aa312b499b946b676616fe1b3cef9210785d
        encoded = fernet.encrypt(s.encode()) 
        return encoded
     def decode(s):
         decoded = fernet.decrypt(encode(s)).decode()
         return decoded
-=======
-       fernet.encrypt(s.encode()) 
-    def decode(s):
-        fernet.decrypt(encode(s)).decode()
->>>>>>> 21fcd0ba55daa78ddbf0232c0c28ed5b2657b2fe
-<<<<<<< HEAD
->>>>>>> d8e9aa312b499b946b676616fe1b3cef9210785d
-=======
->>>>>>> d8e9aa312b499b946b676616fe1b3cef9210785d
     return [encode, decode]
 
 def top_ten_scorers (input):
