@@ -57,38 +57,41 @@ def find_first_then_lower(func, strings):
             return s.lower()
     raise ValueError
 
-def crypto_functions(word):
+def crypto_functions():
     key = Fernet.generate_key()
     fernet = Fernet(key)
     def encode(s):
-       fernet.encrypt(word.encode()) 
+       encoded = fernet.encrypt(s.encode()) 
+       return encoded
     def decode(s):
-        fernet.decrypt(encode(word)).decode()
+        decoded = fernet.decrypt(encode(s)).decode()
+        return decoded
     return [encode, decode]
 
 def top_ten_scorers (input):
     pass
 
 class Quaternion:
-    def __init__(self, a, b, c, decrypt):
+    def __init__(self, a, b, c, d):
         self.co1 = a
         self.co2 = b
         self.co3 = c
         self.co4 = d
 
-    def plus(q):
+    def __add__(self, q):
         answer = Quaternion(self.co1 + q.co1, self.co2 + q.co2, self.co3 + q.co3, self.co4 + q.co4)
         return answer
 
-    def times(q):
+
+    def __mul__(self, q):
         ans1 = self.co1 * q.co1 - self.co2 * q.co2 - self.co3 * q.co3 - self.co4 * q.co4
         ans2 = self.co1 * q.co2 + self.co2 * q.co1 + self.co3 * q.co4 - self.co4 * q.co3
         ans3 = self.co1 * q.co3 - self.co2 * q.co4 + self.co3 * q.co1 + self.co4 * q.co2
         ans4 = self.co1 * q.co4 + self.co2 * q.co3 - self.co3 * q.co2 + self.co4 * q.co1
-    return Quaternion(ans1, ans2, ans3, ans4)
+        return Quaternion(ans1, ans2, ans3, ans4)
 
-    def coefficients():
-        answer = [self.co1, self.co2, self.co3, self.co4]
+    def coefficients(self):
+        answer = (self.co1, self.co2, self.co3, self.co4)
         return answer
 
         
