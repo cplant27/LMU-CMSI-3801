@@ -69,7 +69,35 @@ def crypto_functions():
     return [encode, decode]
 
 def top_ten_scorers (input):
-    pass
+    leaderboard = []
+    holdBoard=[]
+    for x, y in input.items():
+        if len(y[0]) >= 2:
+            for i in y : 
+                if i[1] >= 15:
+                    var1 = (i[0])
+                    var2 = str("{:.2f}".format(i[2]/i[1]))
+                    var2Fl = ("{:.2f}".format(i[2]/i[1]))
+                    var3 = x
+                    finalList = [var1, var2Fl, var3]
+
+                    def sortSecond(val):
+                        return val[1]
+
+                    holdBoard.append(finalList)
+                    holdBoard.sort(key = sortSecond, reverse=True)
+    holdBoard2 = holdBoard[0:10]
+    for i in holdBoard2:
+        var1 = (i[0])
+        var2 = str(i[1])
+        var3 = i[2]
+        finalStr = var1 + "|" + var2 + "|" + var3
+        leaderboard.append(finalStr)
+        
+    if leaderboard == [] :
+        return []
+    else:
+        return leaderboard
 
 class Quaternion:
     def __init__(self, a, b, c, d):
