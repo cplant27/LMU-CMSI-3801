@@ -90,6 +90,7 @@ class Quaternion:
         ans4 = self.co1 * q.co4 + self.co2 * q.co3 - self.co3 * q.co2 + self.co4 * q.co1
         return Quaternion(ans1, ans2, ans3, ans4)
 
+    @property
     def coefficients(self):
         answer = (self.co1, self.co2, self.co3, self.co4)
         return answer
