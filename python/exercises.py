@@ -64,7 +64,7 @@ def crypto_functions():
         encoded = fernet.encrypt(s) 
         return encoded
     def decode(s):
-        decoded = fernet.decrypt(encode(s))
+        decoded = fernet.decrypt(s)
         return decoded
     return [encode, decode]
 
