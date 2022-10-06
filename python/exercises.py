@@ -6,6 +6,9 @@ def change (amt):
     Q = 25
     D = 10
     N = 5
+    num_Q = 0
+    num_D = 0
+    num_N = 0
     if type(amt) != int:
         raise TypeError ("Argument must be of type int.")
     if amt < 0:
@@ -19,8 +22,7 @@ def change (amt):
     if amt >= N:
         num_N = math.floor(amt / N)
         amt = amt % N
-    num_P = amt
-    return tuple([num_Q, num_D, num_N, num_P])
+    return tuple([num_Q, num_D, num_N, amt])
 
 def stretched (phrase):
     phrase = phrase.replace(" ", "")
@@ -44,9 +46,9 @@ def say(word = None):
   else:
     return lambda say2 = None : word if say2 == None else say(word + " " + say2)
 
-def find_first_then_lower(func, strings):
+def find_first_then_lower(property, strings):
     for s in strings:
-        if func(s):
+        if property(s):
             return s.lower()
     raise ValueError
 
@@ -87,33 +89,30 @@ def top_ten_scorers (input):
         finalStr = var1 + "|" + var2 + "|" + var3
         leaderboard.append(finalStr)
         
-    if leaderboard == [] :
-        return []
-    else:
-        return leaderboard
+    return leaderboard
 
 class Quaternion:
     def __init__(self, a, b, c, d):
-        self.co1 = a
-        self.co2 = b
-        self.co3 = c
-        self.co4 = d
+        self.a = a
+        self.b = b
+        self.c = c
+        self.d = d
 
     def __add__(self, q):
-        answer = Quaternion(self.co1 + q.co1, self.co2 + q.co2, self.co3 + q.co3, self.co4 + q.co4)
+        answer = Quaternion(self.a + q.a, self.b + q.b, self.c + q.c, self.d + q.d)
         return answer
 
 
     def __mul__(self, q):
-        ans1 = self.co1 * q.co1 - self.co2 * q.co2 - self.co3 * q.co3 - self.co4 * q.co4
-        ans2 = self.co1 * q.co2 + self.co2 * q.co1 + self.co3 * q.co4 - self.co4 * q.co3
-        ans3 = self.co1 * q.co3 - self.co2 * q.co4 + self.co3 * q.co1 + self.co4 * q.co2
-        ans4 = self.co1 * q.co4 + self.co2 * q.co3 - self.co3 * q.co2 + self.co4 * q.co1
+        ans1 = self.a * q.a - self.b * q.b - self.c * q.c - self.d * q.d
+        ans2 = self.a * q.b + self.b * q.a + self.c * q.d - self.d * q.c
+        ans3 = self.a * q.c - self.b * q.d + self.c * q.a + self.d * q.b
+        ans4 = self.a * q.d + self.b * q.c - self.c * q.b + self.d * q.a
         return Quaternion(ans1, ans2, ans3, ans4)
 
     @property
     def coefficients(self):
-        answer = (self.co1, self.co2, self.co3, self.co4)
+        answer = (self.a, self.b, self.c, self.d)
         return answer
 
         
