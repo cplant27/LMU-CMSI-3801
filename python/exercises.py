@@ -3,47 +3,41 @@ import array
 from cryptography.fernet import Fernet
 
 def change (amt):
-    change = [0,0,0,0]
-
+    Q = 25
+    D = 10
+    N = 5
     if type(amt) != int:
         raise TypeError ("Argument must be of type int.")
-
     if amt < 0:
-        raise ValueError ("amount cannot be negative")
-    
-    if amt >= 25:
-        change[0] = math.floor(amt / 25)
-        amt = amt % 25
-    
-    while amt >= 10:
-        change[1] += 1
-        amt -= 10
+        raise ValueError ("amount cannot be negative")    
+    if amt >= Q:
+        num_Q = math.floor(amt / Q)
+        amt = amt % Q  
+    if amt >= D:
+        num_D = math.floor(amt / D)
+        amt = amt % D
+    if amt >= N:
+        num_N = math.floor(amt / N)
+        amt = amt % N
+    num_P = amt
+    return tuple([num_Q, num_D, num_N, num_P])
 
-    while amt >= 5:
-        change [2] += 1
-        amt -= 5
-    
-    change[3] += amt
-
-    return tuple(change)
-
-def stretched (word):
-    word = word.replace(" ", "")
-    word = word.replace("\n", "")
-    word = word.replace("\t", "")
-    letters_list = list(word)
+def stretched (phrase):
+    phrase = phrase.replace(" ", "")
+    phrase = phrase.replace("\n", "")
+    phrase = phrase.replace("\t", "")
+    letters_list = list(phrase)
     index = list(range(1,len(letters_list)+1))
     letters_list = list(map(lambda x, y : x * y, letters_list, index))
     return ''.join(letters_list)
 
 def powers (**kwargs):
-    print(kwargs)
-    pow = 0
+    exp = 0
     ans = 0
-    while kwargs['base'] ** pow <= kwargs['limit']:
-        ans = kwargs['base'] ** pow
+    while kwargs['base'] ** exp <= kwargs['limit']:
+        ans = kwargs['base'] ** exp
         yield(ans)
-        pow += 1
+        exp += 1
 
 
 def say(word = None):
@@ -61,17 +55,9 @@ def crypto_functions():
     key = Fernet.generate_key()
     fernet = Fernet(key)
     def encode(s):
-<<<<<<< HEAD
-       encoded = fernet.encrypt(s.encode()) 
-       return encoded
-    def decode(s):
-        decoded = fernet.decrypt(encode(s)).decode()
-        return decoded
-=======
        fernet.encrypt(s.encode()) 
     def decode(s):
         fernet.decrypt(encode(s)).decode()
->>>>>>> 21fcd0ba55daa78ddbf0232c0c28ed5b2657b2fe
     return [encode, decode]
 
 def top_ten_scorers (input):
