@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.stream.Stream;
 
 public class Exercises {
     public List<Integer> Change (int coins) {
@@ -34,6 +35,12 @@ public class Exercises {
 
         List<Integer> immutablelist = Collections.unmodifiableList(coinList);
         return immutablelist;
+    }
+
+    public Stream PowerStream (int base) {
+        int power = 0;
+        Stream out = Stream.iterate(base, i -> (int)Math.pow(i, power + 1));
+        return out;
     }
     public static void main (String[] args) {
 
