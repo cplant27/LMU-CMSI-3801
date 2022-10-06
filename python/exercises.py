@@ -33,12 +33,11 @@ def stretched (phrase):
 
 def powers (**kwargs):
     exp = 0
-    pow = 0
-    while kwargs['base'] ** exp <= kwargs['limit']:
-        ans = kwargs['base'] ** exp
+    pow =  kwargs['base'] ** exp
+    while pow <= kwargs['limit']:
         yield(pow)
         exp += 1
-
+        pow = kwargs['base'] ** exp
 
 def say(word = None):
   if word == None: return ''
@@ -64,7 +63,7 @@ def crypto_functions():
 
 def top_ten_scorers (input):
     leaderboard = []
-    holdBoard=[]
+    holdBoard = []
     for x, y in input.items():
         if len(y[0]) >= 2:
             for i in y : 
