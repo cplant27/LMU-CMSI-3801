@@ -6,35 +6,30 @@ public class Exercises {
         int quarters = 0;
         int dimes = 0;
         int nickels = 0;
-        int pennies = 0;
-        List<Integer> coinList = new ArrayList<Integer>();
-
+        int q = 25;
+        int d = 10;
+        int n = 5;
+        List<Integer> numCoins = new ArrayList<Integer>();
         if (coins < 0) {
             throw new IllegalArgumentException("Coins must be positive!");
-        } else if (coins >= 25) {
-            quarters = (int) Math.floor(coins / 25);
-            coins = coins % 25;
         }
-
-        while (coins >= 10) {
-            dimes += 1;
-            coins = coins - 10;
+        if (coins >= q) {
+            quarters = (int) Math.floor(coins / q);
+            coins = coins % q;
+            numCoins.add(quarters);
         }
-
-        while (coins >= 5) {
-            nickels += 1;
-            coins = coins - 5;
+        if (coins >= d) {
+            nickels = (int) Math.floor(coins / d);
+            coins = coins % d;
+            numCoins.add(dimes);
         }
-
-        pennies = coins;
-
-        coinList.add(quarters);
-        coinList.add(dimes);
-        coinList.add(nickels);
-        coinList.add(pennies);
-
-        List<Integer> immutablelist = Collections.unmodifiableList(coinList);
-        return immutablelist;
+        if (coins >= n) {
+            dimes = (int) Math.floor(coins / n);
+            coins = coins % n;
+            numCoins.add(nickels);
+        }
+        numCoins.add(coins);
+        return Collections.unmodifiableList(numCoins);
     }
 
     public Stream PowerStream (int base) {
