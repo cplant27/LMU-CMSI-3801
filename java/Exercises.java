@@ -2,7 +2,7 @@ import java.util.*;
 import java.util.stream.Stream;
 
 public class Exercises {
-    public List<Integer> Change (int coins) {
+    public static List<Integer> change (int coins) {
         int quarters = 0;
         int dimes = 0;
         int nickels = 0;
