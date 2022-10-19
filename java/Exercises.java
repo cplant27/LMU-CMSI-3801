@@ -2,7 +2,7 @@ import java.util.*;
 import java.util.stream.Stream;
 
 public class Exercises {
-    public List<Integer> Change (int coins) {
+    public static List<Integer> change (int coins) {
         int quarters = 0;
         int dimes = 0;
         int nickels = 0;
@@ -32,12 +32,18 @@ public class Exercises {
         return Collections.unmodifiableList(numCoins);
     }
 
-    public Stream PowerStream (int base) {
+    public static String stretched(String phrase){
+
+        return "hello";
+    }
+
+    public static Stream<Integer> powers (int base) {
         int power = 0;
-        Stream out = Stream.iterate(base, i -> (int)Math.pow(i, power + 1));
+        Stream<Integer> out = Stream.iterate(base, i -> (int)Math.pow(i, power + 1));
         return out;
     }
-    public static void main (String[] args) {
 
+    public static String say(String word) {
+        return say(word);
     }
 }

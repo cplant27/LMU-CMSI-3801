@@ -12,7 +12,7 @@ def change (amt):
     if type(amt) != int:
         raise TypeError ("Argument must be of type int.")
     if amt < 0:
-        raise ValueError ("amount cannot be negative")    
+        raise ValueError ("amount cannot be negative")
     if amt >= Q:
         num_Q = math.floor(amt / Q)
         amt = amt % Q  
