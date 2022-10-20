@@ -32,6 +32,7 @@ public class Exercises {
         return Collections.unmodifiableList(numCoins);
     }
 
+<<<<<<< HEAD
     public static String stretched(String phrase){
         phrase = phrase.replace(" ", "");
         Stream<String> charList = Stream.of(phrase);
@@ -42,6 +43,9 @@ public class Exercises {
     }
 
     public static Stream<Integer> powers (int base) {
+=======
+    public static Stream powers (int base) {
+>>>>>>> 0b2c1a7e5828c813d78a73ced1e87784cd783d3f
         int power = 0;
         Stream<Integer> out = Stream.iterate(base, i -> (int)Math.pow(i, power + 1));
         return out;
