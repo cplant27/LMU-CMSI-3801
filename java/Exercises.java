@@ -33,6 +33,10 @@ public class Exercises {
     }
 
     public static String stretched(String phrase){
+        phrase = phrase.replace(" ", "");
+        Stream<String> charList = Stream.of(phrase);
+        
+
 
         return "hello";
     }
