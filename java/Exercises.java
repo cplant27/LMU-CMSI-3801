@@ -32,7 +32,7 @@ public class Exercises {
         return Collections.unmodifiableList(numCoins);
     }
 
-    public Stream PowerStream (int base) {
+    public static Stream powers (int base) {
         int power = 0;
         Stream out = Stream.iterate(base, i -> (int)Math.pow(i, power + 1));
         return out;
