@@ -52,7 +52,20 @@ public class Exercises {
         return out;
     }
 
-    public static String say(String word) {
-        return say(word);
+    @FunctionalInterface
+    public interface Func<String>{
+        String recurse(String blah);
+    }
+
+    public static String say(Optional<String> word) {
+    if (word == null) return "";
+    else
+        return recurse -> {
+            if (recurse == null) return word;
+            else {
+                return say(word + " " + recurse);
+            }
+        };
     }
 }
+
