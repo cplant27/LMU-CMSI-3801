@@ -3,6 +3,10 @@ import java.util.stream.Stream;
 
 public class Quaternion {
         public double a, b, c, d;
+        public static final Quaternion ZERO = new Quaternion(0.0, 0.0, 0.0, 0.0);
+        public static final Quaternion K = new Quaternion(0.0, 0.0, 0.0, 1);
+        public static final Quaternion I = new Quaternion(0.0, 0.0, 0.0, 1);
+        public static final Quaternion J = new Quaternion(0.0, 0.0, 0.0, 1);
 
         public Quaternion(double a, double b, double c, double d) {
             this.a = a;
