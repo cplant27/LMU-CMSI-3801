@@ -47,25 +47,20 @@ public class Exercises {
     }
 
     public static Stream<Integer> powers (int base) {
-        int power = 0;
-        Stream<Integer> out = Stream.iterate(base, i -> (int)Math.pow(i, power + 1));
-        return out;
+        return Stream.iterate(base, i -> (int)Math.pow(base, i));
     }
 
-    @FunctionalInterface
-    public interface Func<String>{
-        String recurse(String blah);
-    }
-
-    public static String say(Optional<String> word) {
-    if (word == null) return "";
-    else
-        return recurse -> {
-            if (recurse == null) return word;
-            else {
-                return say(word + " " + recurse);
-            }
-        };
+    class Say {
+        String phrase;
+        public Say(String word) {
+            this.phrase = word;
+        }
+        public Say and(String word) {
+            this.phrase += word;
+            return this;
+        }
+        public String ok() {
+            return this.phrase;
+        }
     }
 }
-
