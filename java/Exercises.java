@@ -109,5 +109,9 @@ public class Exercises {
         }
         return(TopTen);
    }
+
+    public static Object findFirstThenLower () {
+        return null;
+    }
 }
 
