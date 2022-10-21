@@ -37,7 +37,7 @@ public class Exercises {
         return Collections.unmodifiableList(numCoins);
     }
 
-    public static String stretched(String phrase){
+    public static String stretched (String phrase){
         phrase = phrase.replace(" ", "").toLowerCase();
         String[] letters = phrase.split("");
         for (int i = 0; i < letters.length; i++){
@@ -68,7 +68,7 @@ public class Exercises {
             return this.phrase;
         }
     }
-    static ArrayList<String> TopTenScorers(HashMap<String, List<String>> stats){
+    public static ArrayList<String> topTenScorers (HashMap<String, List<String>> stats){
         ArrayList<String> girlsAbove15 = new ArrayList<>();
         ArrayList<Double> girlsAverageScores = new ArrayList<>();
         ArrayList<String> girlsAverageScoresString = new ArrayList<>();
