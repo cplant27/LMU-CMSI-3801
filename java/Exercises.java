@@ -35,7 +35,7 @@ public class Exercises {
         return Collections.unmodifiableList(numCoins);
     }
 
-    public static String stretched (String phrase){
+    public static String stretched(String phrase){
         phrase = phrase.replace(" ", "").toLowerCase();
         String[] letters = phrase.split("");
         for (int i = 0; i < letters.length; i++){
@@ -45,7 +45,7 @@ public class Exercises {
                 letters[i] += l;
                 j--;
             }
-        } 
+        }
         return String.join("", letters);
     }
 
@@ -53,12 +53,12 @@ public class Exercises {
         return Stream.iterate(base, i -> (int)Math.pow(base, i));
     }
 
-    class Say {
+    class say {
         String phrase;
-        public Say(String word) {
+        public say(String word) {
             this.phrase = word;
         }
-        public Say and(String word) {
+        public say and(String word) {
             this.phrase += word;
             return this;
         }
@@ -66,12 +66,20 @@ public class Exercises {
             return this.phrase;
         }
     }
-<<<<<<< HEAD
+    
+    interface fftlFunc{
+        boolean operate(String s);
+    }
+    static Optional<String> FindFirstThenLower(fftlFunc func, String[] listOfStrings){
+        for(String s : listOfStrings){
+            if ( func.operate(s) ){
+                return Optional.of(s.toLowerCase());
+            }
+        }
+        return null; 
+    }
     
     static ArrayList<String> TopTenScorers(HashMap<String, List<String>> stats){
-=======
-    public static ArrayList<String> topTenScorers (HashMap<String, List<String>> stats){
->>>>>>> e3c91d6955d3778a445f687029fd2506ea825775
         ArrayList<String> girlsAbove15 = new ArrayList<>();
         ArrayList<Double> girlsAverageScores = new ArrayList<>();
         ArrayList<String> girlsAverageScoresString = new ArrayList<>();
@@ -112,9 +120,5 @@ public class Exercises {
         }
         return(TopTen);
    }
-
-    public static Object findFirstThenLower () {
-        return null;
-    }
 }
 
