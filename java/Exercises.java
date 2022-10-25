@@ -1,8 +1,6 @@
 import java.util.*;
 import java.util.List;
-import java.util.Map;
 import java.util.HashMap;
-import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Stream;
 
@@ -37,7 +35,7 @@ public class Exercises {
         return Collections.unmodifiableList(numCoins);
     }
 
-    public static String stretched(String phrase){
+    public static String stretched (String phrase){
         phrase = phrase.replace(" ", "").toLowerCase();
         String[] letters = phrase.split("");
         for (int i = 0; i < letters.length; i++){
@@ -68,8 +66,12 @@ public class Exercises {
             return this.phrase;
         }
     }
+<<<<<<< HEAD
     
     static ArrayList<String> TopTenScorers(HashMap<String, List<String>> stats){
+=======
+    public static ArrayList<String> topTenScorers (HashMap<String, List<String>> stats){
+>>>>>>> e3c91d6955d3778a445f687029fd2506ea825775
         ArrayList<String> girlsAbove15 = new ArrayList<>();
         ArrayList<Double> girlsAverageScores = new ArrayList<>();
         ArrayList<String> girlsAverageScoresString = new ArrayList<>();
@@ -110,5 +112,9 @@ public class Exercises {
         }
         return(TopTen);
    }
+
+    public static Object findFirstThenLower () {
+        return null;
+    }
 }
 
