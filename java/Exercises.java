@@ -68,9 +68,7 @@ public class Exercises {
             return this.phrase;
         }
     }
-<<<<<<< HEAD
-}
-=======
+    
     static ArrayList<String> TopTenScorers(HashMap<String, List<String>> stats){
         ArrayList<String> girlsAbove15 = new ArrayList<>();
         ArrayList<Double> girlsAverageScores = new ArrayList<>();
@@ -114,4 +112,3 @@ public class Exercises {
    }
 }
 
->>>>>>> bd03b5bd9e07e02fed38e1cf62bace44488e2818
