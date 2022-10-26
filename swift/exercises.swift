@@ -18,6 +18,26 @@ static func stretched(_ phrase : String) -> String {
     return String.join("", &letterList);
 }
 
+protocol Animal {
+    var name : String {get}
+    var sound : String {get}
+}
+
+struct Horse: Animal {
+    let name: String
+    let sound = "neigh"
+}
+
+struct Cow: Animal {
+    let name: String
+    let sound = "moooo"
+}
+
+struct Sheep: Animal {
+    let name: String
+    let sound = "baaaa"
+}
+
 func twice(_ f, _ x) {
     return twice(f, x);
 }
