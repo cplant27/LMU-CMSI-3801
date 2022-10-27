@@ -19,8 +19,13 @@ static func stretched(_ phrase : String) -> String {
 }
 
 protocol Animal {
-    var name : String {get}
-    var sound : String {get}
+    init(name: String, sound: String) {
+        self.name = name
+        self.sound = sound
+    }
+    var expression : String {
+        return name + " says " + sound
+    }
 }
 
 struct Horse: Animal {
