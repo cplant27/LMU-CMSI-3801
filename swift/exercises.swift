@@ -47,7 +47,7 @@ func twice(_ f, _ x) {
     return twice(f, x);
 }
 
-
+//Main struct
 struct Quaternion {
     let a: Double
     let b: Double
@@ -58,12 +58,14 @@ struct Quaternion {
     static var K = Quaternion(a: 0, b: 0, c: 0, d: 1)
 }
 
+//String Format
 extension Quaternion: CustomStringConvertible {
   var description: String {
     return "\(a), \(b)i, \(c)j, \(d)k"
   }
 }
 
+//Coefficients
 extension Quaternion {
     static func coefficients (q: Quaternion) -> Array<Double> {
         var coefficientArray:[Double] = [q.a, q.b, q.c, q.d]
