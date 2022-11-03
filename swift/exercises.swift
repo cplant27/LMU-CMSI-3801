@@ -46,3 +46,63 @@ struct Sheep: Animal {
 func twice(_ f, _ x) {
     return twice(f, x);
 }
+
+
+struct Quaternion {
+    let a: Double
+    let b: Double
+    let c: Double
+    let d: Double
+
+    static var ZERO = Quaternion(a: 0, b: 0, c: 0, d: 0)
+    static var K = Quaternion(a: 0, b: 0, c: 0, d: 1)
+}
+
+extension Quaternion: CustomStringConvertible {
+  var description: String {
+    return "\(a), \(b)i, \(c)j, \(d)k"
+  }
+}
+
+extension Quaternion {
+    static func coefficients (q: Quaternion) -> Array<Double> {
+        var coefficientArray:[Double] = [q.a, q.b, q.c, q.d]
+        return coefficientArray
+    }
+}
+
+//Addition
+extension Quaternion {
+    static func + (left: Quaternion, right: Quaternion) -> Quaternion {
+        return [
+            left.a + right.a,
+            left.b + right.b,
+            left.c + right.c,
+            left.d + right.d
+        ]
+    }
+}
+
+//Subtraction
+extension Quaternion {
+    static func - (left: Quaternion, right: Quaternion) -> Quaternion {
+        return [
+            left.a - right.a,
+            left.b - right.b,
+            left.c - right.c,
+            left.d - right.d
+        ]
+    }
+}
+
+//Multiplication
+extension Quaternion {
+    static func * (left: Quaternion, right: Quaternion) -> Quaternion {
+        return [
+            left.a * right.a,
+            left.b * right.b,
+            left.c * right.c,
+            left.d * right.d
+        ]
+    }
+}
