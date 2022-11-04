@@ -1,5 +1,59 @@
 import Foundation
 
+struct Results{
+
+  var coins = (0,0,0,0)
+  var success = false
+  
+}
+ 
+func change(cents : Int) -> (Result) {
+
+    var cents = cents
+    var quarters = 0
+    var dimes = 0
+    var nickles = 0
+    var pennies = 0
+    let result = Results()
+    
+    if (cents < 0) {
+        return result
+    } else {
+        result.success = true
+    }
+    
+    while (cents >= 25){
+        quarters = quarters + 1
+        cents = cents - 25
+    }
+    
+    result.coins.0 = quarters
+    
+    while (cents >= 10){
+        dimes = dimes + 1
+        cents = cents - 10
+    }
+    
+        result.coins.1 = dimes
+
+    while (cents >= 5){
+        nickles = nickles + 1
+        cents = cents - 5
+    }
+
+    result.coins.2 = nickles
+
+    while (cents >= 1){
+        pennies = pennies + 1
+        cents = cents - 1
+    }
+
+    result.coins.3 = pennies
+
+    return result
+
+}
+
 static func stretched(_ phrase : String) -> String {
     phrase = phrase.replacingOccurrences(of:" ", with: "").lowercased();
     let letterList : [String] = phrase.split{$0 == ""}.map(String.init);
