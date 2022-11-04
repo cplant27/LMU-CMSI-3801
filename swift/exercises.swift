@@ -19,9 +19,9 @@ static func stretched(_ phrase : String) -> String {
 }
 
 extension Array {
-    static mapThenUnique(inFunction: (Int) -> (Int)){
+    static mapThenUnique(mapFunc: (Int) -> (Int)){
         for e in self{
-            e = inFunction(e)
+            e = mapFunc(e)
         }
         return Set(self)
     }
