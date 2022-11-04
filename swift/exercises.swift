@@ -18,6 +18,15 @@ static func stretched(_ phrase : String) -> String {
     return String.join("", &letterList);
 }
 
+extension Array {
+    static mapThenUnique(inFunction: (Int) -> (Int)){
+        for e in self{
+            e = inFunction(e)
+        }
+        return Set(self)
+    }
+}
+
 protocol Animal {
     init(name: String, sound: String) {
         self.name = name
