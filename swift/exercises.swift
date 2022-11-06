@@ -131,7 +131,7 @@ extension Quaternion: CustomStringConvertible {
 //Coefficients
 extension Quaternion {
     static func coefficients (q: Quaternion) -> Array<Double> {
-        var coefficientArray:[Double] = [q.a, q.b, q.c, q.d]
+        let coefficientArray:[Double] = [q.a, q.b, q.c, q.d]
         return coefficientArray
     }
 }
@@ -139,35 +139,20 @@ extension Quaternion {
 //Addition
 extension Quaternion {
     static func + (left: Quaternion, right: Quaternion) -> Quaternion {
-        return [
-            left.a + right.a,
-            left.b + right.b,
-            left.c + right.c,
-            left.d + right.d
-        ]
+        return Quaternion(a: left.a + right.a, b: left.b + right.b, c: left.c + right.c, d: left.d + right.d)
     }
 }
 
 //Subtraction
 extension Quaternion {
     static func - (left: Quaternion, right: Quaternion) -> Quaternion {
-        return [
-            left.a - right.a,
-            left.b - right.b,
-            left.c - right.c,
-            left.d - right.d
-        ]
+        return Quaternion(a: left.a - right.a, b: left.b - right.b, c: left.c - right.c, d: left.d - right.d)
     }
 }
 
 //Multiplication
 extension Quaternion {
     static func * (left: Quaternion, right: Quaternion) -> Quaternion {
-        return [
-            left.a * right.a,
-            left.b * right.b,
-            left.c * right.c,
-            left.d * right.d
-        ]
+        return Quaternion(a: left.a * right.a, b: left.b * right.b, c: left.c * right.c, d: left.d * right.d)
     }
 }
