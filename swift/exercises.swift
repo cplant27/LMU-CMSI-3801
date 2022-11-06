@@ -106,9 +106,19 @@ struct Sheep: Animal {
     let sound = "baaaa"
 }
 
-func twice(_ f, _ x) {
-    return twice(f, x);
+func twice(x: Any, function: (Any) -> Any) -> Any {
+    return function(function(x));
 }
+
+func uppercasedFirst (of: String, longerThan: Int) -> String {
+    if let string = of.first(where: {$0.count >= longerThan})? {
+        return string.uppercased()
+    } else {
+        return nil
+    }
+
+}
+
 
 //Main struct
 struct Quaternion {
