@@ -81,6 +81,16 @@ extension Array {
     }
 }
 
+func powers (of: Int, through: Int) -> Int {
+    var num = 0
+    var count = 0
+    while (num < through) {
+        num = pow(count, of)
+        print(num)
+        count ++
+    }
+}
+
 protocol Animal {
     init(name: String, sound: String) {
         self.name = name
