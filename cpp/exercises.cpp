@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <math.h>
+
 int dot(valarray<double> vector1, valarray<double> vector2){
     int total = 0;
     for (int i = 0; i < vector1.size(); i++){
@@ -23,4 +26,14 @@ vector<pair<string, int>> sorted_word_counts(list<string> words) {
   vector<pair<string, int>> pairs(counts.begin(), counts.end());
   sort(pairs.begin(), pairs.end(), value_descending);
   return pairs;
+}
+
+void powers(int base, int limit, function<void(int)> consumer) {
+	int power = 0;
+	int out = 0;
+	while (pow(base, power) <= limit) {
+		out = pow(base, power);
+		consumer(out);
+		power++;
+	}
 }
