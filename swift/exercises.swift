@@ -1,57 +1,25 @@
 import Foundation
 
-struct Results{
-
-  var coins = (0,0,0,0)
-  var success = false
-  
+enum NegativeAmountError: Error {
+  case negative
 }
  
-func change(cents : Int) -> (Result) {
-
-    var cents = cents
-    var quarters = 0
-    var dimes = 0
-    var nickles = 0
-    var pennies = 0
-    let result = Results()
-    
-    if (cents < 0) {
-        return result
-    } else {
-        result.success = true
-    }
-    
-    while (cents >= 25){
-        quarters = quarters + 1
-        cents = cents - 25
-    }
-    
-    result.coins.0 = quarters
-    
-    while (cents >= 10){
-        dimes = dimes + 1
-        cents = cents - 10
-    }
-    
-        result.coins.1 = dimes
-
-    while (cents >= 5){
-        nickles = nickles + 1
-        cents = cents - 5
+func change(_ change: Int) -> Result<(Int,Int,Int,Int), NegativeAmountError> {
+  
+    guard change >= 0 else {
+        return .failure(.negative)
     }
 
-    result.coins.2 = nickles
+    var currentAmount = change
+    let coinType = [25, 10, 5, 1]
+    var changeAmount = [Int]()
 
-    while (cents >= 1){
-        pennies = pennies + 1
-        cents = cents - 1
+    for coinValue in coinType {
+        let (numCoins, _) = currentAmount.quotientAndRemainder(dividingBy: coinValue)
+        changeAmount.append(numCoins)
+        currentAmount -= coinValue * numCoins
     }
-
-    result.coins.3 = pennies
-
-    return result
-
+    return .success((changeAmount[0], changeAmount[1], changeAmount[2], changeAmount[3]))
 }
 
 static func stretched(_ phrase : String) -> String {
