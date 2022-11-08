@@ -135,9 +135,9 @@ extension Quaternion: CustomStringConvertible {
 
 //Coefficients
 extension Quaternion {
-    static func coefficients (q: Quaternion) -> IndexSet {
-        let coefficientArray:[Double] = [q.a, q.b, q.c, q.d]
-        return coefficientArray
+    static func coefficients (q: Quaternion) -> Set<Double> {
+        let coefficientSet: Set = [q.a, q.b, q.c, q.d]
+        return coefficientSet
     }
 }
 
