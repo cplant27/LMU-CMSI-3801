@@ -42,7 +42,7 @@ func stretched(_ phrase : String) -> String {
 
 extension Array {
     func mapThenUnique(mapFunc: (Int) -> (Int))  -> (Set<Int>) {
-        for e in self{
+        for e in self.items {
             e = mapFunc(e)
         }
         return Set(self)
