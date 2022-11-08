@@ -49,11 +49,12 @@ extension Array {
     }
 }
 
-func powers (of: Int, through: Int) -> Int, then  {
+func powers (of: Int, through: Int, then f: (Int) -> String) -> Int {
     var num = 0
     var power = 0
     while (num <= through) {
         num = pow(of, power) as Int
+        f(num)
         power++
     }
 }
