@@ -55,7 +55,7 @@ func powers (of: Int, through: Int) -> Int {
     while (num < through) {
         num = pow(count, of)
         print(num)
-        count ++
+        count++
     }
 }
 
