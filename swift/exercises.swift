@@ -23,25 +23,25 @@ func change(_ change: Int) -> Result<(Int,Int,Int,Int), NegativeAmountError> {
 }
 
 func stretched(_ phrase : String) -> String {
-    phrase = phrase.replacingOccurrences(of:" ", with: "").lowercased();
-    let letterList : [String] = phrase.split{$0 == ""}.map(String.init);
+    var stretchPhrase = phrase.replacingOccurrences(of:" ", with: "").lowercased()
+    let letterList : [String] = stretchPhrase.split{$0 == ""}.map(String.init)
     do {
-        var index : Int = 0;
+        var index : Int = 0
         while (index < letterList.count) {
-            var check : Int = index;
-            let letter : String = letterlist[index];
+            var check : Int = index
+            let letter : String = letterlist[index]
             while (check > 0) {
-                letterList[index] += letter;
-                check -= 1;
+                letterList[index] += letter
+                check -= 1
             }
-            index += 1;
+            index += 1
         }
     }
-    return String.join("", &letterList);
+    return String.join("", &letterList)
 }
 
 extension Array {
-    func mapThenUnique(mapFunc: (Int) -> (Int))  -> (Set) {
+    func mapThenUnique(mapFunc: (Int) -> (Int))  -> (Set<Int>) {
         for e in self{
             e = mapFunc(e)
         }
@@ -55,12 +55,13 @@ func powers (of: Int, through: Int) -> Int {
     while (num < through) {
         num = pow(count, of)
         print(num)
-        count ++
+        count++
     }
 }
 
 protocol Animal {
-    init(name: String, sound: String)
+    var name: String { get }
+    var sound: String { get }
 }
 
 extension Animal{
@@ -70,7 +71,7 @@ extension Animal{
 }
 
 struct Horse: Animal {
-    let name: String
+    let name: String 
     let sound = "neigh"
 }
 
@@ -85,11 +86,11 @@ struct Sheep: Animal {
 }
 
 class say {
-    init(_phrase: String) {
-        self.phrase = _phrase
+    init(_ phrase: String) {
+        self.phrase = phrase
     }
-    func and(_phrase: String) {
-        self.phrase = self.phrase + _phrase
+    func and(_ phrase: String) {
+        self.phrase = self.phrase + phrase
     }
 }
 
