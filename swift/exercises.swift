@@ -122,6 +122,8 @@ struct Quaternion {
 
     static var ZERO = Quaternion(a: 0, b: 0, c: 0, d: 0)
     static var K = Quaternion(a: 0, b: 0, c: 0, d: 1)
+    static var I = Quaternion(a: 0, b: 0, c: 0, d: 0)
+    static var J = Quaternion(a: 0, b: 0, c: 0, d: 1)
 }
 
 //String Format
@@ -133,9 +135,20 @@ extension Quaternion: CustomStringConvertible {
 
 //Coefficients
 extension Quaternion {
-    static func coefficients (q: Quaternion) -> Array<Double> {
+    static func coefficients (q: Quaternion) -> IndexSet {
         let coefficientArray:[Double] = [q.a, q.b, q.c, q.d]
         return coefficientArray
+    }
+}
+
+//Equals
+extension Quaternion: Equatable {
+    static func == (left: Quaternion, right: Quaternion) -> Bool {
+        return 
+            left.a == right.a && 
+            left.b == right.b && 
+            left.c == right.c && 
+            left.d == right.d
     }
 }
 
