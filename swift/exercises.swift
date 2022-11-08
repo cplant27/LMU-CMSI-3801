@@ -41,11 +41,12 @@ func stretched(_ phrase : String) -> String {
 }
 
 extension Array {
-    func mapThenUnique(mapFunc: (Int) -> (Int))  -> (Set<Int>) {
-        for e in self.items {
-            e = mapFunc(e)
+    func mapThenUnique(mapFunc: (Int) -> (Int))  -> Set<Int> {
+        var mapped = Set<Int>()
+        for e in self {
+            mapped.insert(mapFunc(Int(e)))
         }
-        return Set(self)
+        return mapped
     }
 }
 
@@ -55,7 +56,7 @@ func powers (of: Int, through: Int, then f: (Int) -> String) -> Int {
     while (num <= through) {
         num = pow(of, power) as Int
         f(num)
-        power++
+        power +=  1
     }
 }
 
