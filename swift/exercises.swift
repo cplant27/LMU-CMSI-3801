@@ -60,7 +60,8 @@ func powers (of: Int, through: Int) -> Int {
 }
 
 protocol Animal {
-    init(name: String, sound: String)
+    var name: String { get }
+    var sound: String { get }
 }
 
 extension Animal{
