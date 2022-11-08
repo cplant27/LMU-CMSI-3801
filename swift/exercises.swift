@@ -23,36 +23,43 @@ func change(_ change: Int) -> Result<(Int,Int,Int,Int), NegativeAmountError> {
 }
 
 func stretched(_ phrase : String) -> String {
-    var stretchPhrase = phrase.replacingOccurrences(of:" ", with: "").lowercased()
-    var letterList : [String] = stretchPhrase.split{$0 == ""}.map(String.init)
-    do {
-        var index : Int = 0
-        while (index < letterList.count) {
-            var check : Int = index
-            var letter : String = letterList[index]
-            while (check > 0) {
-                letterList[index] += letter
-                check -= 1
-            }
-            index += 1
+    var stretch = phrase.replacingOccurrences(of: " ", with: "").lowercased().split(separator: "")
+    var stretched = ""
+
+    for c in stretch{
+        var i = 0
+        while i <= c.index {
+            stretched = stretched + c 
+            i -= 1
         }
     }
-    return String.join("", &letterList)
+    return stretched
+    // var stretchPhrase = phrase.replacingOccurrences(of:" ", with: "").lowercased()
+    // var letterList : [String] = stretchPhrase.split{$0 == ""}.map(String.init)
+    // var index = 0
+    // while (index < letterList.count) {
+    //     var check : Int = index
+    //     var letter : String = letterList[index]
+    //     while (check > 0) {
+    //         letterList[index] += letter
+    //         check -= 1
+    //     }
+    //     index += 1
+    // }
+    // return String.join("", &letterList)
 }
 
 extension Array {
-    func mapThenUnique(mapFunc: (Any) -> (AnyHashable))  -> Set<AnyHashable> {
+    func mapThenUnique<T>(mapFunc: (Element) -> T )  -> Set<T> {
         return Set(self.map(mapFunc))
     }
 }
 
-func powers (of: Int, through: Int, then f: (Int) -> String) -> Int {
-    var num = 0
-    var power = 0
+func powers (of: Int, through: Int, then: (Int) -> Void){
+    var num = 1
     while (num <= through) {
-        num = pow(of, power) as Int
-        f(num)
-        power +=  1
+        then(num)
+        num = num * of
     }
 }
 
@@ -96,13 +103,13 @@ func twice(x: Any, function: (Any) -> Any) -> Any {
     return function(function(x));
 }
 
-func uppercasedFirst (of: String, longerThan: Int) -> String {
-    if let string = of.first(where: {$0.count >= longerThan})? {
-        return string.uppercased()
-    } else {
-        return nil
+func uppercasedFirst (of: [String], longerThan: Int) -> String? {
+    for e in of{
+        if e.count > longerThan{
+            return e
+        }
     }
-
+    return nil
 }
 
 
