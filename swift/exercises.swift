@@ -34,19 +34,6 @@ func stretched(_ phrase : String) -> String {
         }
     }
     return stretched
-    // var stretchPhrase = phrase.replacingOccurrences(of:" ", with: "").lowercased()
-    // var letterList : [String] = stretchPhrase.split{$0 == ""}.map(String.init)
-    // var index = 0
-    // while (index < letterList.count) {
-    //     var check : Int = index
-    //     var letter : String = letterList[index]
-    //     while (check > 0) {
-    //         letterList[index] += letter
-    //         check -= 1
-    //     }
-    //     index += 1
-    // }
-    // return String.join("", &letterList)
 }
 
 extension Array {
