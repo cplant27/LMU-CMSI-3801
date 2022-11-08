@@ -50,7 +50,7 @@ let c: Animal = Cow(name: "Bessie")
 assert(c.speak() == "Bessie says moooo")
 assert(Sheep(name: "Little Lamb").speak() == "Little Lamb says baaaa")
 
-// Test that Animal really is a protocol with the default method
+// // Test that Animal really is a protocol with the default method
 struct Rat: Animal {
     let name: String
     let sound = "squeak"

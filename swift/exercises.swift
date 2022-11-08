@@ -41,12 +41,8 @@ func stretched(_ phrase : String) -> String {
 }
 
 extension Array {
-    func mapThenUnique(mapFunc: (Int) -> (Int))  -> Set<Int> {
-        var mapped = Set<Int>()
-        for e in self {
-            mapped.insert(mapFunc(Int(e)))
-        }
-        return mapped
+    func mapThenUnique(mapFunc: (Any) -> (AnyHashable))  -> Set<AnyHashable> {
+        return Set(self.map(mapFunc))
     }
 }
 
@@ -87,11 +83,12 @@ struct Sheep: Animal {
 }
 
 class say {
+    var phrase: String
     init(_ phrase: String) {
         self.phrase = phrase
     }
-    func and(_ phrase: String) {
-        self.phrase = self.phrase + phrase
+    func and(_ phrase: String) -> say {
+        return say(self.phrase + phrase) 
     }
 }
 
