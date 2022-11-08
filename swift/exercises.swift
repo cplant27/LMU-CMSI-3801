@@ -54,7 +54,7 @@ func change(cents : Int) -> (Result) {
 
 }
 
-static func stretched(_ phrase : String) -> String {
+func stretched(_ phrase : String) -> String {
     phrase = phrase.replacingOccurrences(of:" ", with: "").lowercased();
     let letterList : [String] = phrase.split{$0 == ""}.map(String.init);
     do {
@@ -73,7 +73,7 @@ static func stretched(_ phrase : String) -> String {
 }
 
 extension Array {
-    static mapThenUnique(mapFunc: (Int) -> (Int)){
+    func mapThenUnique(mapFunc: (Int) -> (Int))  -> (Set) {
         for e in self{
             e = mapFunc(e)
         }
@@ -92,12 +92,12 @@ func powers (of: Int, through: Int) -> Int {
 }
 
 protocol Animal {
-    init(name: String, sound: String) {
-        self.name = name
-        self.sound = sound
-    }
-    var expression : String {
-        return name + " says " + sound
+    init(name: String, sound: String)
+}
+
+extension Animal{
+    func speak() -> (String) {
+        return self.name + " says " + self.sound
     }
 }
 
@@ -114,6 +114,15 @@ struct Cow: Animal {
 struct Sheep: Animal {
     let name: String
     let sound = "baaaa"
+}
+
+class say {
+    init(_phrase: String) {
+        self.phrase = _phrase
+    }
+    func and(_phrase: String) {
+        self.phrase = self.phrase + _phrase
+    }
 }
 
 func twice(x: Any, function: (Any) -> Any) -> Any {
