@@ -24,12 +24,12 @@ func change(_ change: Int) -> Result<(Int,Int,Int,Int), NegativeAmountError> {
 
 func stretched(_ phrase : String) -> String {
     var stretchPhrase = phrase.replacingOccurrences(of:" ", with: "").lowercased()
-    let letterList : [String] = stretchPhrase.split{$0 == ""}.map(String.init)
+    var letterList : [String] = stretchPhrase.split{$0 == ""}.map(String.init)
     do {
         var index : Int = 0
         while (index < letterList.count) {
             var check : Int = index
-            let letter : String = letterlist[index]
+            var letter : String = letterList[index]
             while (check > 0) {
                 letterList[index] += letter
                 check -= 1
