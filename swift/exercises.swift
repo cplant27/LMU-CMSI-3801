@@ -51,11 +51,15 @@ extension Array {
 
 func powers (of: Int, through: Int) -> Int {
     var num = 0
-    var count = 0
-    while (num < through) {
-        num = pow(count, of)
+    var power = 0
+    while (num <= through) {
+        num = pow(of, power)
         print(num)
+<<<<<<< HEAD
         count++
+=======
+        power++
+>>>>>>> 50fa330a47381faa900dea8867b3aefdadcffd4d
     }
 }
 
