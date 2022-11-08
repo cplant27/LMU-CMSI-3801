@@ -49,17 +49,12 @@ extension Array {
     }
 }
 
-func powers (of: Int, through: Int) -> Int {
+func powers (of: Int, through: Int) -> Int, then  {
     var num = 0
     var power = 0
     while (num <= through) {
-        num = pow(of, power)
-        print(num)
-<<<<<<< HEAD
-        count++
-=======
+        num = pow(of, power) as Int
         power++
->>>>>>> 50fa330a47381faa900dea8867b3aefdadcffd4d
     }
 }
 
