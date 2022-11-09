@@ -23,16 +23,12 @@ func change(_ change: Int) -> Result<(Int,Int,Int,Int), NegativeAmountError> {
 }
 
 extension String{
-    func stretched(_ phrase : String) -> String {
-        var stretched = ""
-        for c in phrase.replacingOccurrences(of: " ", with: "").lowercased().enumerated() {
-            var i = 0
-            while i <= c.0 {
-                stretched = stretched + String(c.1)
-                i += 1
-            }
+    var stretched: String {
+        var stretch = ""
+        for c in self.replacingOccurrences(of: " ", with: "").lowercased().enumerated() {
+            stretch += String(repeating: c.1, count: c.0)
         }
-        return stretched
+        return stretch
     }
 }
 
@@ -86,8 +82,8 @@ class say {
     }
 }
 
-func twice<T>(x: T, function: (T) -> T) -> T {
-    return function(function(x));
+func twice<T>(_ f: (T) -> T, appliedTo x: T) -> T {
+    return f(f(x))
 }
 
 func uppercasedFirst (of: [String], longerThan: Int) -> String? {
