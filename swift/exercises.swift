@@ -22,18 +22,18 @@ func change(_ change: Int) -> Result<(Int,Int,Int,Int), NegativeAmountError> {
     return .success((changeAmount[0], changeAmount[1], changeAmount[2], changeAmount[3]))
 }
 
-func stretched(_ phrase : String) -> String {
-    var stretch = phrase.replacingOccurrences(of: " ", with: "").lowercased().split(separator: "")
-    var stretched = ""
-
-    for c in stretch{
-        var i = 0
-        while i <= c.index {
-            stretched = stretched + c 
-            i -= 1
+extension String{
+    func stretched(_ phrase : String) -> String {
+        var stretched = ""
+        for c in phrase.replacingOccurrences(of: " ", with: "").lowercased().enumerated() {
+            var i = 0
+            while i <= c.0 {
+                stretched = stretched + String(c.1)
+                i += 1
+            }
         }
+        return stretched
     }
-    return stretched
 }
 
 extension Array {
@@ -86,7 +86,7 @@ class say {
     }
 }
 
-func twice(x: Any, function: (Any) -> Any) -> Any {
+func twice<T>(x: T, function: (T) -> T) -> T {
     return function(function(x));
 }
 
