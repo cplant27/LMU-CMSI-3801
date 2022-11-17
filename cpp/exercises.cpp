@@ -1,20 +1,39 @@
 #include <stdio.h>
 #include <math.h>
+#include <iostream>
+#include <list>
+#include <string>
+#include <vector>
+#include <array>
+#include <valarray>
+#include <map>
+#include <memory>
+#include "exercises.h"
 
-int dot(valarray<double> vector1, valarray<double> vector2){
-    int total = 0;
-    for (int i = 0; i < vector1.size(); i++){
-        total += vector1[i] * vector2[i]
-    }
-    return total
+using namespace std;
+
+// g++ -std=c++2a -o runcpptests exercises.cpp exercises.test.cpp && ./runcpptests
+
+double dot(valarray<double> a, valarray<double> b) {
+  int total = 0;
+  for (int i = 0; i < a.size(); i++){
+      total += a[i] * b[i];
+  }
+  return total;
 }
 
-vector<int> stretched_positives(vector<int> vecToStretch){
-    stretchedVec = new vector<int>
-    copy_if(vecToStretch.begin(), vecToStretch.end(), std::back_inserter(stretched_vec), [](int i) {
-    return i != 0;
-	});
-    //for each loop that duplicates numbers
+vector<int> stretched_positives(vector<int> v) {
+  vector<int> positivesVec;
+  copy_if(v.begin(), v.end(), back_inserter(positivesVec), [](int x) {return x != 0;});
+  vector<int> stretchedVec;
+  for (int i = 0; i < positivesVec.size(); i++) {
+    int s = 0;
+    while (s <= i) {
+      stretchedVec.push_back(positivesVec[i]);
+      s++;
+    }
+  } 
+  return stretchedVec;
 }
 
 vector<pair<string, int>> sorted_word_counts(list<string> words) {

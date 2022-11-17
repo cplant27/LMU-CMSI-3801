@@ -5,6 +5,7 @@
 #include <array>
 #include <valarray>
 #include <iostream>
+#include <memory>
 
 using namespace std;
 
