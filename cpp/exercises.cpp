@@ -51,21 +51,6 @@ void powers(int base, int limit, function<void(int)> consumer) {
 }
 
 // 4) Int Stack Class
-// class IntStack {
-//   struct Node {
-//     int value;
-//     shared_ptr<Node> next;
-//   };
-//   shared_ptr<Node> top;
-// public:
-//   IntStack() {}
-//   IntStack(const IntStack&) = delete;
-//   IntStack& operator=(const IntStack&) = delete;
-//   int size();
-//   void push(int item);
-//   int pop();
-// };
-
   int IntStack::size() {
     int nodeCount = 0;
     if (top) {
