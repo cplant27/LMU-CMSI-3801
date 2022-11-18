@@ -12,7 +12,7 @@
 
 using namespace std;
 
-// g++ -std=c++2a -o runcpptests exercises.cpp exercises.test.cpp && ./runcpptests
+// g++ -std=c++03 -o runcpptests exercises.cpp exercises.test.cpp && ./runcpptests
 
 double dot(valarray<double> a, valarray<double> b) {
   int total = 0;
@@ -56,3 +56,11 @@ void powers(int base, int limit, function<void(int)> consumer) {
 		power++;
 	}
 }
+
+struct Sayer {
+  Sayer say(string word = NULL){
+    if (word == NULL) {
+      return this.words;
+    }
+  }
+};
