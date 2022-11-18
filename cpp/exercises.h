@@ -22,6 +22,9 @@ class IntStack {
   };
   shared_ptr<Node> top;
 public:
+  IntStack() {}
+  IntStack(const IntStack&) = delete;
+  IntStack& operator=(const IntStack&) = delete;
   int size();
   void push(int item);
   int pop();
