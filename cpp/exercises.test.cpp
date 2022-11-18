@@ -25,23 +25,23 @@ int main() {
   powers(-3, 300, [&](int power){scratch.push_back(power);});
   assert(scratch == (vector {1, -3, 9, -27, 81, -243}));
 
-  // IntStack s;
-  // assert(s.size() == 0);
-  // s.push(13);
-  // s.push(1);
-  // s.push(8);
-  // assert(s.size() == 3);
-  // assert(s.pop() == 8);
-  // assert(s.size() == 2);
-  // assert(s.pop() == 1);
-  // assert(s.pop() == 13);
-  // assert(s.size() == 0);
-  // try {
-  //   s.pop();
-  //   assert(false);
-  // } catch (logic_error e) {
-  //   assert(true);
-  // }
+  IntStack s;
+  assert(s.size() == 0);
+  s.push(13);
+  s.push(1);
+  s.push(8);
+  assert(s.size() == 3);
+  assert(s.pop() == 8);
+  assert(s.size() == 2);
+  assert(s.pop() == 1);
+  assert(s.pop() == 13);
+  assert(s.size() == 0);
+  try {
+    s.pop();
+    assert(false);
+  } catch (logic_error e) {
+    assert(true);
+  }
 
   assert(say("A")() == "A");
   assert(say("A")("B")() == "A B");

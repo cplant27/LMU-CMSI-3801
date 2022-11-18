@@ -66,21 +66,32 @@ void powers(int base, int limit, function<void(int)> consumer) {
 //   int pop();
 // };
 
-  // IntStack::IntStack() {
-    
-  // }
+  int IntStack::size() {
+    int nodeCount = 0;
+    if (top) {
+      shared_ptr<Node> temp = top;
+      nodeCount = 1;
+      while(temp->next) {
+        temp = temp->next;
+        nodeCount++;
+      };
+    };
+    return nodeCount;
+  };
 
-  // int IntStack::size() {
+  void IntStack::push(int item) {
+    top = shared_ptr<Node>(new Node{item, top});
+  };
 
-  // };
+  int IntStack::pop() {
 
-  // void IntStack::push(int item) {
-    
-  // };
-
-  // int IntStack::pop() {
-
-  // };
+    if (this->size() == 0) {
+      throw logic_error("WOOAH. THERE'S NOTHING IN HERE!");
+    }
+    int resultItem = top->value;
+    top = top->next;
+    return resultItem;
+  };
 
 
 // 5) Sayer
