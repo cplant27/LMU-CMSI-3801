@@ -51,32 +51,32 @@ void powers(int base, int limit, function<void(int)> consumer) {
 }
 
 // 4) Int Stack Class
-  int IntStack::size() {
-    int nodeCount = 0;
-    if (top) {
-      shared_ptr<Node> temp = top;
-      nodeCount = 1;
-      while(temp->next) {
-        temp = temp->next;
-        nodeCount++;
-      };
+int IntStack::size() {
+  int nodeCount = 0;
+  if (top) {
+    shared_ptr<Node> temp = top;
+    nodeCount = 1;
+    while(temp->next) {
+      temp = temp->next;
+      nodeCount++;
     };
-    return nodeCount;
   };
+  return nodeCount;
+};
 
-  void IntStack::push(int item) {
-    top = shared_ptr<Node>(new Node{item, top});
-  };
+void IntStack::push(int item) {
+  top = shared_ptr<Node>(new Node{item, top});
+};
 
-  int IntStack::pop() {
+int IntStack::pop() {
 
-    if (this->size() == 0) {
-      throw logic_error("WOOAH. THERE'S NOTHING IN HERE!");
-    }
-    int resultItem = top->value;
-    top = top->next;
-    return resultItem;
-  };
+  if (this->size() == 0) {
+    throw logic_error("WOOAH. THERE'S NOTHING IN HERE!");
+  }
+  int resultItem = top->value;
+  top = top->next;
+  return resultItem;
+};
 
 
 // 5) Sayer
@@ -109,46 +109,46 @@ vector<pair<string, int>> sorted_word_counts(list<string> words) {
 
 // 7) Quaternion struct
 
-  Quaternion::Quaternion(double a, double b, double c, double d): a(a), b(b), c(c), d(d) {}
+Quaternion::Quaternion(double a, double b, double c, double d): a(a), b(b), c(c), d(d) {}
 
-  array<double, 4> Quaternion::coefficients(){
-    return {this->a, this->b, this->c, this->d};
-  };
+array<double, 4> Quaternion::coefficients(){
+  return {this->a, this->b, this->c, this->d};
+};
 
-  Quaternion Quaternion::operator+(const Quaternion& other){
-    return Quaternion(this->a + other.a, this->b + other.b, this->c + other.c, this->d + other.d);
-  };
+Quaternion Quaternion::operator+(const Quaternion& other){
+  return Quaternion(this->a + other.a, this->b + other.b, this->c + other.c, this->d + other.d);
+};
 
-  Quaternion Quaternion::operator-(const Quaternion& other){
-    return Quaternion(this->a - other.a, this->b - other.b, this->c - other.c, this->d - other.d);
-  };
+Quaternion Quaternion::operator-(const Quaternion& other){
+  return Quaternion(this->a - other.a, this->b - other.b, this->c - other.c, this->d - other.d);
+};
 
-  Quaternion Quaternion::operator*(const Quaternion& other){
-    return Quaternion(
-      (this->a * other.a) - (this->b * other.b) - (this->c * other.c) - (this->d * other.d), 
-      (this->a * other.b) + (this->b * other.a) + (this->c * other.d) - (this->d * other.c), 
-      (this->a * other.c) - (this->b * other.d) + (this->c * other.a) + (this->d * other.b), 
-      (this->a * other.d) + (this->b * other.c) - (this->c * other.b) + (this->d * other.a)
-      );
-  };
+Quaternion Quaternion::operator*(const Quaternion& other){
+  return Quaternion(
+    (this->a * other.a) - (this->b * other.b) - (this->c * other.c) - (this->d * other.d), 
+    (this->a * other.b) + (this->b * other.a) + (this->c * other.d) - (this->d * other.c), 
+    (this->a * other.c) - (this->b * other.d) + (this->c * other.a) + (this->d * other.b), 
+    (this->a * other.d) + (this->b * other.c) - (this->c * other.b) + (this->d * other.a)
+    );
+};
 
-  bool Quaternion::operator==(const Quaternion& other) const{
-    return this->a == other.a && this->b == other.b && this->c == other.c&& this->d == other.d;
-  };
+bool Quaternion::operator==(const Quaternion& other) const{
+  return this->a == other.a && this->b == other.b && this->c == other.c&& this->d == other.d;
+};
 
-  Quaternion Quaternion::ZERO{0,0,0,0};
-  Quaternion Quaternion::I{0,1,0,0};
-  Quaternion Quaternion::J{0,0,1,0};
-  Quaternion Quaternion::K{0,0,0,1};
+Quaternion Quaternion::ZERO{0,0,0,0};
+Quaternion Quaternion::I{0,1,0,0};
+Quaternion Quaternion::J{0,0,1,0};
+Quaternion Quaternion::K{0,0,0,1};
 
-  ostream& operator<<(ostream& o, Quaternion q) {
-    o << q.a;
-    o << (q.b >= 0 ? "+": "");
-    o << q.b;
-    o << (q.c >= 0 ? "i+": "i");
-    o << q.c;
-    o << (q.d >= 0 ? "j+": "j");
-    o << q.d;
-    o << "k";
-    return o;
-  };
+ostream& operator<<(ostream& o, Quaternion q) {
+  o << q.a;
+  o << (q.b >= 0 ? "+": "");
+  o << q.b;
+  o << (q.c >= 0 ? "i+": "i");
+  o << q.c;
+  o << (q.d >= 0 ? "j+": "j");
+  o << q.d;
+  o << "k";
+  return o;
+};
